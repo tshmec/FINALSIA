@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manusquee | Student Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .login-btn {
+            background: #2563eb;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #ffffff
+            );
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content .tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #2563eb;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: white;
+            color: #2563eb;
+            padding: 14px 25px;
+            border-radius: 7px;
+            border: 1px solid #2563eb;
+            font-weight: bold;
+        }
+
+        .secondary-btn:hover {
+            background: #eff6ff;
+        }
+
+        /* HERO CARD */
+
+        .hero-card {
+            width: 420px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-card h3 {
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dbeafe;
+            border-radius: 8px;
+            font-size: 22px;
+        }
+
+        .stat-text h4 {
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .stat-text p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* FEATURES */
+
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+            background: white;
+        }
+
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .features > p {
+            color: #64748b;
+            margin-bottom: 45px;
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 70px 8%;
+            text-align: center;
+            background: #2563eb;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            color: #dbeafe;
+        }
+
+        .cta a {
+            display: inline-block;
+            text-decoration: none;
+            background: white;
+            color: #2563eb;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links a:not(.login-btn) {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <div class="logo">
+            MANUSQUEE
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="dashboard.html" class="login-btn">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="tag">
+                🎓 Student Management System
+            </span>
+
+            <h1>
+                Manage Your
+                <span>Students</span>
+                Easily
+            </h1>
+
+            <p>
+                Welcome to Manusquee, a simple and modern
+                student management system designed to help
+                you organize and manage student information
+                efficiently.
+            </p>
+
+            <div class="buttons">
+
+                <a href="{% url 'dashboard' %}" class="primary-btn">
+                    Get Started →
+                </a>
+
+                <a href="#features" class="secondary-btn">
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- DASHBOARD PREVIEW -->
+        <div class="hero-card">
+
+            <h3>
+                 Student Overview
+            </h3>
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    
+                </div>
+
+                <div class="stat-text">
+                    <h4>Student Records</h4>
+                    <p>Manage student information</p>
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    
+                </div>
+
+                <div class="stat-text">
+                    <h4>Courses</h4>
+                    <p>Organize student courses</p>
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    
+                </div>
+
+                <div class="stat-text">
+                    <h4>Student Information</h4>
+                    <p>Keep records organized</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+
+        <h2>
+            Everything You Need
+        </h2>
+
+        <p>
+            Manage your student records in one place.
+        </p>
+
+
+        <div class="feature-container">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                
+                </div>
+
+                <h3>
+                    Student Management
+                </h3>
+
+                <p>
+                    Store and manage student information
+                    including names, IDs, courses, and
+                    contact details.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    
+                </div>
+
+                <h3>
+                    Dashboard
+                </h3>
+
+                <p>
+                    View your student records and important
+                    statistics from one convenient dashboard.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    
+                </div>
+
+                <h3>
+                    Secure Records
+                </h3>
+
+                <p>
+                    Keep your student information organized
+                    and accessible through the management system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta" id="about">
+
+        <h2>
+            Ready to Manage Your Students?
+        </h2>
+
+        <p>
+            Access your student dashboard and start managing
+            your records today.
+        </p>
+
+        <a href="{% url 'dashboard' %}">
+            Open Dashboard →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Manusquee Student Management System.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
